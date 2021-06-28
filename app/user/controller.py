@@ -20,22 +20,26 @@ api = Namespace("User", description="A modular namespace within user")  # noqa
 @api.route("/")
 class UserResource(Resource):
 
-
-    @responds(schema=UserSchema, many=True)
-    def get(self):
-        #obj = request.parsed_obj
-        resp = flask.Response(status=201)
-
+    def get(self) -> List[User]:
+        """Get all User"""
+        # search by first_name and last_name
+        args = request.args
+        filters = list()
+        if "first_name" in args:
+            filters.append({'model': 'Widget', 'field': 'first_name', 'op': '==', 'value': args["first_name"]})
+        if "last_name" in args:
+            filters.append({'model': 'Widget', 'field': 'last_name', 'op': '==', 'value': args["last_name"]})
+            return Userservice.get_all(filters)
     #    args = request.args
     #    if "first_name" in args:
     #       first_name = args["first_name"]
     #       return Userservice.get_by_name(first_name)
 
-        all_user = Userservice.get_all()
-        print(all_user[0].user_id)
+    #    all_user = Userservice.get_all()
+    #    print(all_user[0].user_id)
        # resp.headers["Total_length"] = len (all_user)
        # resp.data = (json.dumps(all_user))
-        return all_user
+    #    return all_user
 
     @accepts(schema=UserSchema, api=api)
     @responds(schema=UserSchema)

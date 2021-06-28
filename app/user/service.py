@@ -2,20 +2,24 @@ from app import db
 from typing import List
 from .model import User
 from .interface import UserInterface
+from sqlalchemy_filters import apply_filters
 
 
 class Userservice():
-    @staticmethod
-    def get_by_name(first_name: str) -> List[User]:
-        return User.query.filter(User.first_name == first_name).all()
+    class UserService:
+        @staticmethod
+        def get_all(filters) -> List[User]:
+            f_query = db.session.query(User)
+            # add filters from list of filter
+            if len(filters) > 0:
+                f_query = apply_filters(f_query, filters)
+                return f_query.all()
 
-  #  @staticmethod
-  #  def get_all_length() -> List[User]:
-  #      return User.query.filter(User.user_id).count()
-
     @staticmethod
-    def get_all() -> List[User]:
+    def get_all(self)->[User]:
         return User.query.all()
+
+
     @staticmethod
     def create(new_attrs: UserInterface) -> User:
         new_user = User(
