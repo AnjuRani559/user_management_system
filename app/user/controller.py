@@ -36,12 +36,12 @@ class UserResource(Resource):
         obj["created_at"] = datetime.now()
         resp = Response(status=201)
         min = int(request.headers["min-length"])
-        print(f"min length{min}")
+
 
         if len(obj["first_name"]) < min:
             return Response(status=400, response="letter must be greater than {min}")
-        use1 = Userservice.create(obj)
-        resp.headers["user_id"] = use1.user_id
+        db_user = Userservice.create(obj)
+        resp.headers["user_id"] = db_user.user_id
         return resp
 
 
