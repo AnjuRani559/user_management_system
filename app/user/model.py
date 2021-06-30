@@ -1,9 +1,7 @@
-from sqlalchemy import Table, Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime
 from app import db  # noqa
 from .interface import UserInterface
-#from click import DateTime
 from datetime import datetime
-from typing import Any
 
 
 class User(db.Model):
