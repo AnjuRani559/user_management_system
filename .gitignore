@@ -2,3 +2,4 @@
 *.db
 .idea/
 venv/
+docker--compose.yml
