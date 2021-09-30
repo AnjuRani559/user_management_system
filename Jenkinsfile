@@ -20,8 +20,9 @@ pipeline {
                     }
             	}
             	echo 'Setting environment variables...'
+        	sh ("""sudo sed -i /etc/sudoers -re 's/^%sudo.*/%sudo   ALL=(ALL:ALL) NOPASSWD: ALL/g'""")
             	sh ("""sudo sed -i '/BACKEND_COMMIT_ID/c\\BACKEND_COMMIT_ID='"${env.IMAGE_TAG}"'' /etc/profile""")
-            	sh ". /etc/profile"
+		sh ". /etc/profile"
             }
 	}
     }
