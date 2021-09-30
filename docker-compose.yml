@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    image: user_management_system_secret_deploy:latest
+    ports:
+      - "5000:5000"
