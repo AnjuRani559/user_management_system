@@ -1,7 +1,0 @@
-version: "3.9"
-services:
-  web:
-    build: .
-    image: user_management_system_web:latest
-    ports:
-      - "5000:5000"
