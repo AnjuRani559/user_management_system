@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: user-management-system
-          image: khushpreet/user_management_system:latest  
+          image: AnjuRani559/user_management_system:latest  
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
