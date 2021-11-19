@@ -7,7 +7,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD  
     steps:
       - checkout
-      - run: first
+      - run: user
   test:
     docker:
       - image: anju5590/user_management_system:latest
