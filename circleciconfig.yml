@@ -1,0 +1,27 @@
+jobs:
+  build:
+    docker:
+      - image: anju5590/user_management_system:latest
+        auth:
+          username: anju5590
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - run: user
+  test:
+    docker:
+      - image: anju5590/user_management_system:latest
+        auth:
+          username: anju5590
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - run: user
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test
+
+
