@@ -4,7 +4,7 @@ jobs:
       - image: anju5590/user_management_system:latest
         auth:
           username: anju5590
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          password: $DOCKERHUB_PASSWORD  
     steps:
       - checkout
       - run: user
@@ -13,7 +13,7 @@ jobs:
       - image: anju5590/user_management_system:latest
         auth:
           username: anju5590
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          password: $DOCKERHUB_PASSWORD  
     steps:
       - checkout
       - run: user
