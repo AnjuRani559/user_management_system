@@ -1,5 +1,5 @@
 
-version: "3.3"
+version: "3.2"
 services:
   user_management_system:
     build: .
